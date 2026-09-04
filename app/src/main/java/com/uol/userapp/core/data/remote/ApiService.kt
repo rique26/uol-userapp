@@ -3,6 +3,7 @@ package com.uol.userapp.core.data.remote
 import com.uol.userapp.features.albums.data.model.AlbumResponse
 import com.uol.userapp.features.albums.data.model.PhotoResponse
 import com.uol.userapp.features.users.data.model.UserResponse
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -14,20 +15,20 @@ import retrofit2.http.Query
 interface ApiService {
 
     @GET("users")
-    suspend fun getUsers(): List<UserResponse>
+    suspend fun getUsers(): Response<List<UserResponse>>
 
     @GET("users/{id}")
     suspend fun getUserById(
         @Path("id") id: Int
-    ): UserResponse
+    ): Response<UserResponse>
 
     @GET("albums")
     suspend fun getAlbumsByUser(
         @Query("userId") userId: Int
-    ): List<AlbumResponse>
+    ): Response<List<AlbumResponse>>
 
     @GET("photos")
     suspend fun getPhotosByAlbum(
         @Query("albumId") albumId: Int
-    ): List<PhotoResponse>
+    ): Response<List<PhotoResponse>>
 }
