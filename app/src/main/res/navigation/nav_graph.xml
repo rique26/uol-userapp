@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph">
+
+    <!-- Tela 1: Listagem de usuários (com filtro) -->
+
+
+    <!-- Tela 2: Detalhe do usuário + listagem de álbuns -->
+
+
+    <!-- Tela 3: Álbum em grid (fotos) -->
+
+</navigation>

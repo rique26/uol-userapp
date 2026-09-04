@@ -16,6 +16,8 @@ retrofit = "2.11.0"
 okhttp = "4.12.0"
 picasso = "2.8"
 mockk = "1.13.12"
+hilt = "2.51.1"
+ksp = "2.0.21-1.0.27"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -47,6 +49,10 @@ okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-i
 # Picasso
 picasso = { group = "com.squareup.picasso", name = "picasso", version.ref = "picasso" }
 
+# Hilt
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
+
 # MockK
 mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
 
@@ -54,4 +60,5 @@ mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 navigation-safeargs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation" }
-
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
