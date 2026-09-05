@@ -1,7 +1,7 @@
 package com.uol.userapp.features.users.di
 
 import com.uol.userapp.features.users.domain.repository.UserRepository
-import com.uol.userapp.features.users.domain.repository.UserRepositoryImpl
+import com.uol.userapp.features.users.data.repository.UserRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

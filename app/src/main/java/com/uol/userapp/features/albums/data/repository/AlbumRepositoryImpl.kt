@@ -1,19 +1,21 @@
-package com.uol.userapp.features.users.domain.repository
+package com.uol.userapp.features.albums.data.repository
 
 import com.uol.userapp.core.data.remote.ApiService
 import com.uol.userapp.core.domain.util.ApiException
 import com.uol.userapp.core.domain.util.Result
-import com.uol.userapp.features.users.data.mapper.toDomain
-import com.uol.userapp.features.users.domain.model.User
+import com.uol.userapp.features.albums.data.mapper.toDomain
+import com.uol.userapp.features.albums.domain.model.Album
+import com.uol.userapp.features.albums.domain.model.Photo
+import com.uol.userapp.features.albums.domain.repository.AlbumRepository
 import java.io.IOException
 import javax.inject.Inject
 
-class UserRepositoryImpl @Inject constructor(
+class AlbumRepositoryImpl @Inject constructor(
     private val apiService: ApiService
-) : UserRepository {
+) : AlbumRepository {
 
-    override suspend fun getUsers(): Result<List<User>> = try {
-        val response = apiService.getUsers()
+    override suspend fun getAlbumsByUser(userId: Int): Result<List<Album>> = try {
+        val response = apiService.getAlbumsByUser(userId)
         if (response.isSuccessful) {
             Result.Success(response.body().orEmpty().toDomain())
         } else {
@@ -23,11 +25,10 @@ class UserRepositoryImpl @Inject constructor(
         Result.Error(mapThrowable(e))
     }
 
-    override suspend fun getUserById(userId: Int): Result<User> = try {
-        val response = apiService.getUserById(userId)
-        val body = response.body()
-        if (response.isSuccessful && body != null) {
-            Result.Success(body.toDomain())
+    override suspend fun getPhotosByAlbum(albumId: Int): Result<List<Photo>> = try {
+        val response = apiService.getPhotosByAlbum(albumId)
+        if (response.isSuccessful) {
+            Result.Success(response.body().orEmpty().toDomain())
         } else {
             Result.Error(ApiException(response.code(), response.message()))
         }
