@@ -7,9 +7,9 @@ import com.uol.userapp.features.albums.domain.model.Photo
 fun PhotoResponse.toDomain(): Photo = Photo(
     id = id,
     albumId = albumId,
-    title = title.orEmpty(),
-    url = url.orEmpty(),
-    thumbnailUrl = thumbnailUrl.orEmpty()
+    title = title,
+    url = url,
+    thumbnailUrl = thumbnailUrl
 )
 @JvmName("photoResponseListToDomain")
 fun List<PhotoResponse>.toDomain(): List<Photo> = map { it.toDomain() }
@@ -17,9 +17,9 @@ fun List<PhotoResponse>.toDomain(): List<Photo> = map { it.toDomain() }
 fun PhotoResponse.toEntity(): PhotoEntity = PhotoEntity(
     id = id,
     albumId = albumId,
-    title = title.orEmpty(),
-    url = url.orEmpty(),
-    thumbnailUrl = thumbnailUrl.orEmpty()
+    title = title,
+    url = url,
+    thumbnailUrl = thumbnailUrl
 )
 fun List<PhotoResponse>.toEntity(): List<PhotoEntity> = map { it.toEntity() }
 
