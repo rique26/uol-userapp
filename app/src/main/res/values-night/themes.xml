@@ -12,9 +12,11 @@
         <item name="colorSurfaceContainerLow">@color/surface_container_dark</item>
     </style>
 
-    <style name="ThemeOverlay.UserApp.Toolbar" parent="">
+    <style name="ThemeOverlay.UserApp.Toolbar" parent="ThemeOverlay.Material3.Toolbar.Surface">
+        <item name="titleTextColor">@color/white</item>
+        <item name="subtitleTextColor">@color/white</item>
         <item name="colorControlNormal">@color/white</item>
         <item name="colorOnSurface">@color/white</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnSurfaceVariant">@color/white</item>
     </style>
 </resources>

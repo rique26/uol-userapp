@@ -12,11 +12,12 @@
         <item name="colorSurfaceContainerLow">@color/surface_container_light</item>
     </style>
 
-    <style name="ThemeOverlay.UserApp.Toolbar" parent="">
-        <item name="android:background">?attr/colorPrimary</item>
+    <style name="ThemeOverlay.UserApp.Toolbar" parent="ThemeOverlay.Material3.Toolbar.Surface">
+        <item name="titleTextColor">@color/black</item>
+        <item name="subtitleTextColor">@color/black</item>
         <item name="colorControlNormal">@color/black</item>
         <item name="colorOnSurface">@color/black</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorOnSurfaceVariant">@color/black</item>
     </style>
 
     <style name="Theme.UserApp" parent="Base.Theme.UserApp" />
