@@ -7,12 +7,13 @@
     android:layout_height="match_parent"
     android:background="?attr/colorSurface"
     android:clipToPadding="false"
-    android:fillViewport="true"
-    android:paddingBottom="48dp">
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutRootUserDetail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp">
 
         <!-- Estado de Loading -->
         <ProgressBar

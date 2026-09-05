@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.uol.userapp.core.extensions.applyWindowInsets
 import com.uol.userapp.databinding.FragmentUserDetailBinding
 import com.uol.userapp.features.albums.presentation.list.adapter.AlbumsAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,6 +45,10 @@ class UserDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        applyWindowInsets(
+            rootView = binding.nestedScrollViewUserDetail,
+            bottomView = binding.layoutRootUserDetail
+        )
         setupRecyclerView()
         setupRetryButton()
         observeUiState()
