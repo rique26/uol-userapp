@@ -1,7 +1,6 @@
 package com.uol.userapp.core.di
 
 import com.uol.userapp.core.data.remote.ApiService
-import com.uol.userapp.core.data.remote.RetrofitClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

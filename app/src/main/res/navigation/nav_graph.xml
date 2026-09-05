@@ -2,10 +2,16 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/userListFragment">
 
     <!-- Tela 1: Listagem de usuários (com filtro) -->
-
+    <fragment
+        android:id="@+id/userListFragment"
+        android:name="com.uol.userapp.features.users.presentation.list.UserListFragment"
+        android:label="Usuários"
+        tools:layout="@layout/fragment_user_list">
+    </fragment>
 
     <!-- Tela 2: Detalhe do usuário + listagem de álbuns -->
 
