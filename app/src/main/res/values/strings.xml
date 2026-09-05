@@ -4,4 +4,8 @@
     <string name="hint_search_users">Buscar usuário...</string>
     <string name="message_no_users_found">Nenhum usuário encontrado</string>
     <string name="action_retry">Tentar novamente</string>
+
+    <string name="label_albums">Álbuns</string>
+    <string name="format_user_address">%1$s, %2$s — %3$s</string>
+    <string name="title_profile">Perfil</string>
 </resources>

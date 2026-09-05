@@ -11,9 +11,8 @@
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_view_users"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        android:background="@drawable/bg_search_view"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorSurface"
         app:iconifiedByDefault="false"
         app:queryHint="@string/hint_search_users"
         app:layout_constraintEnd_toEndOf="parent"

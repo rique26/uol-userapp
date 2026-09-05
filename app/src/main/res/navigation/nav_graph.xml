@@ -11,9 +11,32 @@
         android:name="com.uol.userapp.features.users.presentation.list.UserListFragment"
         android:label="Usuários"
         tools:layout="@layout/fragment_user_list">
+
+        <action
+            android:id="@+id/action_userListFragment_to_userDetailFragment"
+            app:destination="@id/userDetailFragment" />
     </fragment>
 
     <!-- Tela 2: Detalhe do usuário + listagem de álbuns -->
+    <fragment
+        android:id="@+id/userDetailFragment"
+        android:name="com.uol.userapp.features.users.presentation.detail.UserDetailFragment"
+        android:label="{userName}"
+        tools:layout="@layout/fragment_user_detail">
+
+        <argument
+            android:name="userId"
+            app:argType="integer" />
+
+        <argument
+            android:name="userName"
+            app:argType="string" />
+
+        <!--
+        <action
+            android:id="@+id/action_userDetailFragment_to_albumDetailFragment"
+            app:destination="@id/albumDetailFragment" /> -->
+    </fragment>
 
 
     <!-- Tela 3: Álbum em grid (fotos) -->

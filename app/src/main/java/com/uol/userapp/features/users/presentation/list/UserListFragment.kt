@@ -22,11 +22,15 @@ class UserListFragment : Fragment() {
 
     private var _binding: FragmentUserListBinding? = null
     private val binding get() = _binding!!
-
     private val viewModel: UsersViewModel by viewModels()
 
-    private val usersAdapter = UsersAdapter {
-
+    private val usersAdapter = UsersAdapter { user ->
+        val action = UserListFragmentDirections
+            .actionUserListFragmentToUserDetailFragment(
+                userId = user.id,
+                userName = user.name
+            )
+        findNavController().navigate(action)
     }
 
     override fun onCreateView(
