@@ -9,10 +9,12 @@ class PhotoMapperTest {
 
     /**
      * Objetivo: Garantir que a conversão do DTO de rede (PhotoResponse) para o modelo
-     * de domínio (Photo) mapeie corretamente todas as propriedades da foto.
+     * de domínio (Photo) mapeie corretamente as propriedades da foto, e que a URL
+     * original (via.placeholder.com, com falhas conhecidas de SSL) seja sanitizada
+     * para o provedor estável (Picsum Photos), usando o id como seed determinística.
      */
     @Test
-    fun `toDomain should map PhotoResponse to Photo domain model correctly`() {
+    fun `toDomain should map PhotoResponse to Photo domain model and sanitize the image URL`() {
         // Arrange
         val response = PhotoResponse(
             id = 100,
@@ -29,13 +31,15 @@ class PhotoMapperTest {
         assertEquals(100, photo.id)
         assertEquals(1, photo.albumId)
         assertEquals("Foto de Praia", photo.title)
-        assertEquals("https://via.placeholder.com/600", photo.url)
-        assertEquals("https://via.placeholder.com/150", photo.thumbnailUrl)
+        assertEquals("https://picsum.photos/seed/100/600", photo.url)
+        assertEquals("https://picsum.photos/seed/100/150", photo.thumbnailUrl)
     }
 
     /**
      * Objetivo: Validar se a conversão do DTO de rede (PhotoResponse) para a entidade
-     * de persistência (PhotoEntity) transfere os dados com precisão para gravação no Room.
+     * de persistência (PhotoEntity) transfere os dados originais com precisão para
+     * gravação no Room — aqui a URL NÃO é sanitizada, pois o cache guarda o dado cru
+     * da API; a sanitização acontece só na saída para o domínio (toDomain()).
      */
     @Test
     fun `toEntity should map PhotoResponse to PhotoEntity correctly`() {
@@ -61,17 +65,19 @@ class PhotoMapperTest {
 
     /**
      * Objetivo: Verificar se a entidade do banco local (PhotoEntity) é convertida
-     * corretamente para o modelo de domínio (Photo) na leitura do cache offline.
+     * corretamente para o modelo de domínio (Photo) na leitura do cache offline —
+     * incluindo a mesma sanitização de URL aplicada na leitura online, para que o
+     * fallback offline não reintroduza o link quebrado do via.placeholder.com.
      */
     @Test
-    fun `toDomain should map PhotoEntity to Photo domain model correctly`() {
+    fun `toDomain should map PhotoEntity to Photo domain model and sanitize the image URL`() {
         // Arrange
         val entity = PhotoEntity(
             id = 300,
             albumId = 3,
             title = "Montanha",
-            url = "https://site.com/mountain.jpg",
-            thumbnailUrl = "https://site.com/mountain_thumb.jpg"
+            url = "https://via.placeholder.com/600",
+            thumbnailUrl = "https://via.placeholder.com/150"
         )
 
         // Act
@@ -81,12 +87,13 @@ class PhotoMapperTest {
         assertEquals(300, photo.id)
         assertEquals(3, photo.albumId)
         assertEquals("Montanha", photo.title)
-        assertEquals("https://site.com/mountain.jpg", photo.url)
-        assertEquals("https://site.com/mountain_thumb.jpg", photo.thumbnailUrl)
+        assertEquals("https://picsum.photos/seed/300/600", photo.url)
+        assertEquals("https://picsum.photos/seed/300/150", photo.thumbnailUrl)
     }
 
     /**
-     * Objetivo: Confirmar o mapeamento em lote de coleções de fotos para o domínio e para o banco.
+     * Objetivo: Confirmar o mapeamento em lote de coleções de fotos para o domínio e
+     * para o banco, incluindo a sanitização de URL nas conversões para domínio.
      */
     @Test
     fun `list extension functions should map photo lists correctly`() {
@@ -104,6 +111,8 @@ class PhotoMapperTest {
         assertEquals(1, entitiesFromResponses.size)
         assertEquals(1, domainFromEntities.size)
         assertEquals(1, domainFromResponses.first().id)
+        assertEquals("https://picsum.photos/seed/1/600", domainFromResponses.first().url)
         assertEquals(2, domainFromEntities.first().id)
+        assertEquals("https://picsum.photos/seed/2/600", domainFromEntities.first().url)
     }
 }

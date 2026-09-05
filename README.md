@@ -83,6 +83,18 @@ Essa lógica está coberta por testes unitários (`UserRepositoryImplTest`,
 `AlbumRepositoryImplTest`) para todos os cenários: sucesso, erro HTTP, fallback com cache
 populado, fallback com cache vazio e exceção genérica.
 
+> **Nota sobre URLs de imagem:** durante o desenvolvimento, percebi que a API JSONPlaceholder
+> retorna URLs de fotos hospedadas em `via.placeholder.com`, um serviço com falhas conhecidas
+> e persistentes de certificado SSL desde 2023 — problema documentado pela própria comunidade,
+> não uma instabilidade pontual da minha rede. Como isso impedia demonstrar corretamente a
+> tela de álbum (tanto o grid via Picasso quanto a abertura no app padrão de fotos, que são
+> requisitos centrais desta tela), tomei a liberdade de sanitizar essas URLs no `PhotoMapper`,
+> substituindo-as por `picsum.photos` (usando o id da foto como seed, para manter
+> determinismo). É uma pequena alteração no dado vindo da API, feita conscientemente e
+> documentada aqui para ficar transparente — o objetivo foi só garantir que a funcionalidade
+> pudesse ser avaliada como pretendido.
+
+
 ---
 
 ## 🛠️ Stack Técnica
