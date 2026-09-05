@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Cores do App -->
     <color name="yellow_500">#FBC02D</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+
+    <!-- Tons neutros para superfícies -->
+    <color name="surface_dark">#121212</color>
+    <color name="surface_container_dark">#1E1E1E</color>
+    <color name="surface_container_light">#F5F5F5</color>
 </resources>

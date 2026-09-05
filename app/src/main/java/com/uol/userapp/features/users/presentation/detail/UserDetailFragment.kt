@@ -25,12 +25,12 @@ class UserDetailFragment : Fragment() {
     private val viewModel: UserDetailViewModel by viewModels()
 
     private val albumsAdapter = AlbumsAdapter { album ->
-//        val action = UserDetailFragmentDirections
-//            .actionUserDetailFragmentToAlbumDetailFragment(
-//                albumId = album.id,
-//                albumTitle = album.title
-//            )
-//        findNavController().navigate(action)
+        val action = UserDetailFragmentDirections
+            .actionUserDetailFragmentToAlbumDetailFragment(
+                albumId = album.id,
+                albumTitle = album.title
+            )
+        findNavController().navigate(action)
     }
 
     override fun onCreateView(
@@ -44,16 +44,9 @@ class UserDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupToolbar()
         setupRecyclerView()
         setupRetryButton()
         observeUiState()
-    }
-
-    private fun setupToolbar() {
-        binding.toolbarUserDetail.setNavigationOnClickListener {
-            findNavController().navigateUp()
-        }
     }
 
     private fun setupRecyclerView() {

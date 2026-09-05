@@ -3,21 +3,44 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootUserList"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/colorSurface"
     tools:context=".features.users.presentation.list.UserListFragment">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/search_view_users"
+    <View
+        android:id="@+id/viewTopHeaderBackground"
         android:layout_width="0dp"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorSurface"
-        app:iconifiedByDefault="false"
-        app:queryHint="@string/hint_search_users"
+        android:layout_height="0dp"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="@id/card_search_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Container da Barra de Busca -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_search_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="?attr/colorSurface"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="3dp"
+        app:strokeWidth="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_view_users"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            app:iconifiedByDefault="false"
+            app:queryBackground="@android:color/transparent"
+            app:queryHint="@string/hint_search_users" />
+
+    </com.google.android.material.card.MaterialCardView>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_users"
@@ -26,14 +49,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_view_users">
+        app:layout_constraintTop_toBottomOf="@id/card_search_container">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_users"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
-            android:paddingBottom="16dp"
+            android:paddingBottom="24dp"
             tools:listitem="@layout/item_user" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
@@ -47,7 +70,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_view_users" />
+        app:layout_constraintTop_toBottomOf="@id/card_search_container" />
 
     <!-- Estado: filtro/lista sem resultados -->
     <LinearLayout
@@ -60,7 +83,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_view_users">
+        app:layout_constraintTop_toBottomOf="@id/card_search_container">
 
         <ImageView
             android:layout_width="64dp"
@@ -92,7 +115,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_view_users">
+        app:layout_constraintTop_toBottomOf="@id/card_search_container">
 
         <ImageView
             android:layout_width="64dp"
@@ -105,9 +128,10 @@
             android:id="@+id/text_error_state_users"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
             android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="12dp"
             android:gravity="center"
+            android:text="@string/message_error_loading_users"
             android:textAppearance="?attr/textAppearanceBodyMedium"
             android:textColor="?attr/colorOnSurfaceVariant"
             tools:text="Não foi possível carregar os usuários." />

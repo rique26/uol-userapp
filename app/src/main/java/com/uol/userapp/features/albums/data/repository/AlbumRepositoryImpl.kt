@@ -28,6 +28,14 @@ class AlbumRepositoryImpl @Inject constructor(
     override suspend fun getPhotosByAlbum(albumId: Int): Result<List<Photo>> = try {
         val response = apiService.getPhotosByAlbum(albumId)
         if (response.isSuccessful) {
+            // Mock de URL válida para teste visual e de navegação
+//            val mockedPhotos = response.body().orEmpty().toDomain().map { photo ->
+//                photo.copy(
+//                    url = "https://picsum.photos/id/${photo.id}/600/600",
+//                    thumbnailUrl = "https://picsum.photos/id/${photo.id}/150/150"
+//                )
+//            }
+//            Result.Success(mockedPhotos)
             Result.Success(response.body().orEmpty().toDomain())
         } else {
             Result.Error(ApiException(response.code(), response.message()))

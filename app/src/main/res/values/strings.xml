@@ -1,11 +1,21 @@
 <resources>
+    <!-- App & Navegação -->
     <string name="app_name">UserApp</string>
-
-    <string name="hint_search_users">Buscar usuário...</string>
-    <string name="message_no_users_found">Nenhum usuário encontrado</string>
+    <string name="title_profile">Perfil</string>
     <string name="action_retry">Tentar novamente</string>
 
-    <string name="label_albums">Álbuns</string>
+    <!-- Lista de Usuários -->
+    <string name="hint_search_users">Buscar usuário…</string>
+    <string name="message_no_users_found">Nenhum usuário encontrado</string>
+    <string name="message_error_loading_users">Não foi possível carregar os usuários.</string>
+
+    <!-- Detalhes do Usuário -->
+    <string name="label_albums">ÁLBUNS</string>
     <string name="format_user_address">%1$s, %2$s — %3$s</string>
-    <string name="title_profile">Perfil</string>
+    <string name="message_error_loading_user_detail">Não foi possível carregar os detalhes do usuário.</string>
+
+    <!-- Detalhes do Álbum & Fotos -->
+    <string name="message_no_photos_found">Nenhuma foto encontrada neste álbum</string>
+    <string name="message_error_loading_photos">Não foi possível carregar as fotos.</string>
+    <string name="error_no_app_to_open_photo">Nenhum app disponível para abrir esta foto</string>
 </resources>

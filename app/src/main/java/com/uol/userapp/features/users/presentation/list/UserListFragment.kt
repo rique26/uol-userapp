@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.uol.userapp.core.extensions.applyWindowInsets
 import com.uol.userapp.databinding.FragmentUserListBinding
 import com.uol.userapp.features.users.presentation.list.adapter.UsersAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,6 +45,11 @@ class UserListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        applyWindowInsets(
+            rootView = binding.rootUserList,
+            topView = binding.cardSearchContainer,
+            bottomView = binding.swipeRefreshUsers
+        )
         setupRecyclerView()
         setupSearchView()
         setupSwipeRefresh()

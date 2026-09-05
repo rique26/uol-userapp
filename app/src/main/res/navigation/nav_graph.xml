@@ -32,13 +32,25 @@
             android:name="userName"
             app:argType="string" />
 
-        <!--
         <action
             android:id="@+id/action_userDetailFragment_to_albumDetailFragment"
-            app:destination="@id/albumDetailFragment" /> -->
+            app:destination="@id/albumDetailFragment" />
     </fragment>
 
 
     <!-- Tela 3: Álbum em grid (fotos) -->
+    <fragment
+        android:id="@+id/albumDetailFragment"
+        android:name="com.uol.userapp.features.albums.presentation.detail.AlbumDetailFragment"
+        android:label="{albumTitle}"
+        tools:layout="@layout/fragment_album_detail">
 
+        <argument
+            android:name="albumId"
+            app:argType="integer" />
+
+        <argument
+            android:name="albumTitle"
+            app:argType="string" />
+    </fragment>
 </navigation>
